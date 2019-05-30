@@ -1,0 +1,6 @@
+{% for student in slists %}
+
+
+<a href="{% url 'blogapp:studentdetail'  student.id %}">{{student.name}}</a>
+
+{% endfor %}

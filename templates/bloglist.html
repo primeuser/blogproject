@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1><a href="{% url 'blogapp:blogcreate' %}">Create</a></h1>
+<div class="row">
+	<div class="col-md-1">
+	
+	</div>
+
+
+	<div class= "col-md-8">
+		{% for blog in bloglist %}
+		<br><h1>{{forloop.counter}}</h1>
+		<a href="{% url 'blogapp:blogdetail' blog.id %}">{{blog.title}}</a>
+			<h2>{{ blog.title}}</h2>
+			<h3>{{blog.date_created}}</h3>
+			<p>{{ blog.description}}</p>
+			<img src="{{blog.image.url}}" class= "img-fluid" width="300"><br>
+			<a href="{% url 'blogapp:blogupdate' blog.id %}">Update</a>
+		{% endfor %}
+		
+	</div>
+
+	<div class="col-md-3">
+		{% for blog in bloglist %}
+		<br>
+			<div class="card" style="width: 18rem;">
+		  		<img class="card-img-top" src="{{blog.image.url}}" alt="{{blog.author}}" >
+		  		<div class="card-body">
+		    		<h5 class="card-title">{{blog.title}}</h5>
+		    		<p class="card-text">{{blog.description }}</p>
+		    		<a href="#" class="btn btn-primary">Read More</a>
+		  		</div>
+			</div><br>
+			<br>
+		{% endfor %}
+
+		
+	</div>
+
+</div>
+
+{% endblock %}

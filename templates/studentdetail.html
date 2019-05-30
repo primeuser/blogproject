@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Student Detail</h1>
+
+{{studentdetail.id}}
+{{studentdetail.name}}
+{{studentdetail.address}}
+<img src="{{studentdetail.image.url}}" class="img-fluid" width="100"  >{% endblock %}

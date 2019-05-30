@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=190669901429295&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=190669901429295&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="row">
+	
+	<dir class="col=md-2">
+		
+	</dir><br>
+	<dir class="col-md-8">
+		
+	{{blogdetail.id}}
+	{{blogdetail.title}}
+	{{blogdetail.description}}
+	<img src="{{blogdetail.image.url}}" class="img-fluid" width="300">
+
+	<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="500px" data-numposts="5"></div>
+
+	<div class="fb-share-button" data-href="http://localhost:8001" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8001%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+	</dir>
+	<div class="col-md-2">
+		<br>
+		{% for blog in bloglist %}
+		<a href="{% url 'blogapp:blogdetail' blog.id %}">{{blog.title}}</a>
+			<h2>{{ blog.title}}</h2>
+		{{blog.description}}<br>
+		<img src="{{blog.image.url}}" class="img-fluid" width="300">
+		<br>
+		<br>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
